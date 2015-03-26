@@ -19,6 +19,7 @@ public class ChargingReceiver extends BroadcastReceiver {
             Intent i = new Intent();
             i.setClassName("com.janderson.slumber", "com.janderson.slumber.WearActivity");
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
             context.startActivity(i);
         }
     }

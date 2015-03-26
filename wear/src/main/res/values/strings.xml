@@ -2,8 +2,7 @@
 <resources>
 
     <string name="app_name">Slumber</string>
-    <string name="hello_round">Hello Round World!</string>
-    <string name="hello_square">Hello Square World!</string>
     <string name="title_activity_preference">PreferenceActivity</string>
+    <string name="title_activity_screen_off">ScreenOffActivity</string>
 
 </resources>

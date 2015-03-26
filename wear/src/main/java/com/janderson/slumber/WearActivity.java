@@ -18,18 +18,18 @@ public class WearActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wear);
-        final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
+        final WatchViewStub stub = new WatchViewStub(this);
+        stub.setRectLayout(R.layout.rect_activity_wear);
+        stub.setRoundLayout(R.layout.round_activity_wear);
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
-                WindowManager.LayoutParams settings = getWindow().getAttributes();
-                originalBrightness = settings.screenBrightness;
                 WindowManager.LayoutParams params = getWindow().getAttributes();
                 params.screenBrightness = 0.0f;
-                params.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
+                        WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                 getWindow().setAttributes(params);
-                LinearLayout screen = (LinearLayout) findViewById(R.id.screen);
+                LinearLayout screen = (LinearLayout) stub.findViewById(R.id.screen);
                 screen.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -41,5 +41,6 @@ public class WearActivity extends Activity {
                 });
             }
         });
+        setContentView(stub);
     }
 }
